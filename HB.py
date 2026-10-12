@@ -3,14 +3,15 @@ import html
 import streamlit as st
 import streamlit.components.v1 as components
 
-# ========================================
+# ==========================================
 # CONFIGURACIÓN DE STREAMLIT
-# ========================================
+# ==========================================
 
 st.set_page_config(
-    page_title="Un cumpleaños mágico 🎂",
-    page_icon="🎉",
-    layout="centered"
+    page_title="Feliz cumpleaños, Bry 🎂",
+    page_icon="💖",
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
 st.markdown("""
@@ -24,73 +25,63 @@ st.markdown("""
 
 .block-container {
     padding-top: 2rem;
+    padding-bottom: 1rem;
     max-width: 850px;
 }
 
-h1, p, label {
-    color: #fff !important;
+/* Ocultar elementos innecesarios */
+[data-testid="stSidebar"] {
+    display: none;
 }
 
-[data-testid="stTextInput"] input,
-[data-testid="stTextArea"] textarea {
-    background: #ffffff12;
-    color: white;
-    border: 1px solid #ffffff44;
+[data-testid="stHeader"] {
+    background: transparent;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("✨ Un pequeño regalo digital")
-st.write(
-    "Personaliza los detalles y abre la tarjeta "
-    "para descubrir la sorpresa."
-)
 
-# ========================================
-# PERSONALIZACIÓN
-# ========================================
+# ==========================================
+# PERSONALIZACIÓN DIRECTAMENTE EN EL CÓDIGO
+# ==========================================
 
-with st.expander("💌 Personalizar tarjeta", expanded=False):
+nombre = "Bry"
 
-    nombre = st.text_input(
-        "Nombre de quien cumple años",
-        "Persona especial",
-        max_chars=60
-    )
+remitente = "Alguien que aprecia mucho tu amistad 💖"
 
-    remitente = st.text_input(
-        "De parte de",
-        "Alguien que te quiere mucho",
-        max_chars=60
-    )
+mensaje = """
+¡Feliz cumpleaños, Bry! 🎂💖
 
-    mensaje = st.text_area(
-        "Dedicatoria",
-        (
-            "Que este nuevo año de vida te traiga aventuras "
-            "inolvidables, sueños cumplidos y muchísimas "
-            "razones para sonreír. "
-            "¡Nunca dejes de brillar! 💖"
-        ),
-        max_chars=500
-    )
+Hoy es un día muy especial y quiero desearte
+toda la felicidad del mundo.
 
-# Escapar caracteres para proteger el HTML
-nombre = html.escape(
-    nombre.strip() or "Persona especial"
-)
+Espero que este nuevo año de vida esté lleno
+de momentos bonitos, nuevas aventuras,
+muchas sonrisas y sueños cumplidos.
 
-remitente = html.escape(
-    remitente.strip() or "Alguien que te quiere mucho"
-)
+Quiero que sepas que aprecio muchísimo tu amistad.
+Gracias por ser una persona tan especial y
+por todos esos momentos que hacen que
+una amistad valga tanto.
 
-mensaje = html.escape(
-    mensaje.strip() or "¡Que todos tus sueños se hagan realidad!"
-).replace("\n", "<br>")
+Nunca dejes de ser tú ni de brillar
+con esa luz tan bonita que te caracteriza. ✨
 
-# ========================================
-# TARJETA HTML + CSS + JAVASCRIPT
-# ========================================
+¡Que la vida te regale tantas cosas lindas
+como las que tú transmites a los demás! 💕
+
+¡Disfruta muchísimo tu día! 🎉
+"""
+
+# Proteger el contenido insertado en HTML
+nombre = html.escape(nombre)
+remitente = html.escape(remitente)
+mensaje = html.escape(mensaje.strip()).replace("\n", "<br>")
+
+
+# ==========================================
+# HTML + CSS + JAVASCRIPT
+# ==========================================
 
 page = r'''
 <!doctype html>
@@ -117,7 +108,7 @@ body {
 
 .scene {
     position: relative;
-    min-height: 650px;
+    min-height: 720px;
     border: 1px solid #ffffff35;
     border-radius: 28px;
     overflow: hidden;
@@ -134,11 +125,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     padding: 32px 18px;
     isolation: isolate;
 }
 
-/* ESTRELLAS */
+/* ESTRELLAS ANIMADAS */
 
 .stars {
     position: absolute;
@@ -174,7 +166,7 @@ body {
     z-index: -1;
 }
 
-/* TEXTO SUPERIOR */
+/* ENCABEZADO */
 
 .eyebrow {
     font-size: 13px;
@@ -190,7 +182,7 @@ body {
 .card {
     position: relative;
     width: min(100%, 530px);
-    min-height: 365px;
+    min-height: 430px;
     border-radius: 25px;
 
     background:
@@ -240,7 +232,7 @@ body {
     }
 }
 
-/* PASTEL */
+/* PASTEL ANIMADO */
 
 .cake {
     font-size: 75px;
@@ -272,7 +264,7 @@ h2 {
 }
 
 .name {
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 700;
     color: #b34487;
     overflow-wrap: anywhere;
@@ -291,6 +283,17 @@ h2 {
     color: #975b85;
     font-style: italic;
     margin-top: 18px;
+}
+
+/* MENSAJE LARGO */
+
+#inside {
+    padding: 5px 0;
+}
+
+#inside p {
+    font-size: 15px;
+    line-height: 1.75;
 }
 
 /* BOTÓN */
@@ -331,7 +334,7 @@ h2 {
     text-align: center;
 }
 
-/* GLOBOS */
+/* GLOBOS FLOTANTES */
 
 .balloon {
     position: absolute;
@@ -397,7 +400,7 @@ h2 {
 @keyframes fall {
     to {
         transform:
-            translate(var(--dx), 760px)
+            translate(var(--dx), 1200px)
             rotate(var(--r));
 
         opacity: .15;
@@ -424,17 +427,25 @@ h2 {
 @media (max-width: 480px) {
 
     .scene {
-        min-height: 680px;
+        min-height: 750px;
         padding: 24px 12px;
     }
 
     .card {
-        min-height: 390px;
+        min-height: 430px;
         padding: 20px;
     }
 
     .cake {
         font-size: 60px;
+    }
+
+    #inside p {
+        font-size: 14px;
+    }
+
+    .eyebrow {
+        letter-spacing: 2px;
     }
 }
 
@@ -536,7 +547,7 @@ h2 {
 
     </div>
 
-    <!-- BOTÓN INTERACTIVO -->
+    <!-- BOTÓN -->
 
     <button
         id="open"
@@ -557,13 +568,13 @@ h2 {
 
 </div>
 
-<!-- JAVASCRIPT -->
-
 <script>
+
+/* ESTADO DE LA TARJETA */
 
 let opened = false;
 
-/* GENERAR LLUVIA DE CONFETI */
+/* LLUVIA DE CONFETI */
 
 function confetti() {
 
@@ -615,38 +626,51 @@ function confetti() {
     }
 }
 
-/* ABRIR Y CERRAR TARJETA */
+/* ABRIR Y CERRAR LA TARJETA */
 
 function toggleCard() {
 
-    opened = !opened;
-
-    const cover = document.getElementById('cover');
-    const inside = document.getElementById('inside');
     const button = document.getElementById('open');
     const hint = document.getElementById('hint');
+    const cover = document.getElementById('cover');
+    const inside = document.getElementById('inside');
 
-    cover.classList.toggle('hidden', opened);
-    inside.classList.toggle('hidden', !opened);
+    if (opened) {
+        confetti();
+        return;
+    }
 
-    button.textContent = opened
-        ? '🎉 ¡Otra lluvia de alegría!'
-        : '💌 Abrir mi sorpresa';
+    opened = true;
 
-    hint.textContent = opened
-        ? '✨ Que la magia te acompañe todo el año ✨'
-        : 'Hay cosas bonitas que merecen celebrarse ✨';
+    cover.classList.add('hidden');
+    inside.classList.remove('hidden');
 
-    const activeFace =
-        document.querySelector('.face:not(.hidden)');
+    button.textContent = '🎉 ¡Otra lluvia de alegría!';
 
-    activeFace.style.animation = 'none';
+    hint.textContent =
+        '✨ Que la magia te acompañe todo el año ✨';
 
-    void activeFace.offsetHeight;
+    inside.style.animation = 'none';
 
-    activeFace.style.animation = 'arrive .6s both';
+    void inside.offsetHeight;
+
+    inside.style.animation = 'arrive .6s both';
 
     confetti();
+
+    /* Ajustar la altura del contenido al abrir la carta */
+    setTimeout(adjustHeight, 100);
+}
+
+/* ADAPTAR ALTURA DEL ESCENARIO */
+
+function adjustHeight() {
+
+    const scene = document.getElementById('scene');
+
+    scene.style.minHeight = opened
+        ? 'auto'
+        : '720px';
 }
 
 </script>
@@ -655,9 +679,9 @@ function toggleCard() {
 </html>
 '''
 
-# ========================================
+# ==========================================
 # INSERTAR DATOS PERSONALIZADOS
-# ========================================
+# ==========================================
 
 page = (
     page.replace("__NOMBRE__", nombre)
@@ -665,12 +689,12 @@ page = (
         .replace("__REMITENTE__", remitente)
 )
 
-# ========================================
-# MOSTRAR LA TARJETA EN STREAMLIT
-# ========================================
+# ==========================================
+# MOSTRAR TARJETA EN STREAMLIT
+# ==========================================
 
 components.html(
     page,
-    height=750,
+    height=1100,
     scrolling=True
 )
