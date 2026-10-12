@@ -45,9 +45,9 @@ st.markdown("""
 # PERSONALIZACIÓN DIRECTAMENTE EN EL CÓDIGO
 # ==========================================
 
-nombre = "Bry"
+nombre = "Bry!"
 
-remitente = "Alguien que aprecia mucho tu amistad 💖"
+remitente = "Por mas dias de racha! 💖"
 
 mensaje = """
 ¡Feliz cumpleaños, Bry! 🎂💖
@@ -55,20 +55,16 @@ mensaje = """
 Hoy es un día muy especial y quiero desearte
 toda la felicidad del mundo.
 
-Espero que este nuevo año de vida esté lleno
-de momentos bonitos, nuevas aventuras,
-muchas sonrisas y sueños cumplidos.
+Espero que cumplas con muchos años mas,
+que Diosito te bendiga, y la pases bonito
+en tu dia!
 
-Quiero que sepas que aprecio muchísimo tu amistad.
-Gracias por ser una persona tan especial y
-por todos esos momentos que hacen que
-una amistad valga tanto.
+Aunque no nos conozcamso quiero que sepas,
+que aprecio muchísimo tu amistad. Gracias por
+ser una chica tan amable y tierna siempre!
 
 Nunca dejes de ser tú ni de brillar
 con esa luz tan bonita que te caracteriza. ✨
-
-¡Que la vida te regale tantas cosas lindas
-como las que tú transmites a los demás! 💕
 
 ¡Disfruta muchísimo tu día! 🎉
 """
@@ -493,7 +489,7 @@ h2 {
     </div>
 
     <div class="eyebrow">
-        ✧ Una sorpresa hecha para ti ✧
+        ✧ Un pequeña sorpresa ✧
     </div>
 
     <!-- TARJETA -->
@@ -513,7 +509,7 @@ h2 {
             </div>
 
             <p>
-                Hoy el universo celebra que existes. ✨
+                Hoy es un dia especial ✨
             </p>
 
             <div class="from">
@@ -559,7 +555,7 @@ h2 {
     </button>
 
     <div class="hint" id="hint">
-        Hay cosas bonitas que merecen celebrarse ✨
+        :3
     </div>
 
     <div class="footer">
