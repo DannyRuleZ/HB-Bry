@@ -644,7 +644,7 @@ function toggleCard() {
     button.textContent = '🎉 ¡Otra lluvia de alegría!';
 
     hint.textContent =
-        '✨ Que la magia te acompañe todo el año ✨';
+        '✨ Nunca cambies! ✨';
 
     inside.style.animation = 'none';
 
