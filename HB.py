@@ -59,7 +59,7 @@ Espero que cumplas con muchos años mas,
 que Diosito te bendiga, y la pases bonito
 en tu dia!
 
-Aunque no nos conozcamso quiero que sepas,
+Aunque no nos conozcamos mucho quiero que sepas,
 que aprecio muchísimo tu amistad. Gracias por
 ser una chica tan amable y tierna siempre!
 
